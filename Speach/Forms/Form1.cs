@@ -50,5 +50,11 @@ namespace Speach
                     inp.Keyboard.KeyUp(ex);
                 }
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            ProfilesForm prof = new ProfilesForm();
+            prof.ShowDialog();
+        }
     }
 }
