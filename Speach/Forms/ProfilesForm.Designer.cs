@@ -82,7 +82,8 @@
             this.Controls.Add(this.listBox1);
             this.Name = "ProfilesForm";
             this.Text = "Профили";
-            this.Load += new System.EventHandler(this.ProfilesForm_Load);
+            this.Shown += new System.EventHandler(this.ProfilesForm_Shown);
+            this.EnabledChanged += new System.EventHandler(this.ProfilesForm_EnabledChanged);
             this.ResumeLayout(false);
 
         }

@@ -7,7 +7,7 @@ namespace Speach
 {
     public partial class ProfilesForm : Form
     {
-        Dictionary<string,string> profDict;
+        public Dictionary<string,string> profDict = new Dictionary<string, string>();
         public ProfilesForm()
         {
             InitializeComponent();
@@ -20,24 +20,44 @@ namespace Speach
 
         private void button3_Click(object sender, EventArgs e)
         {
-            CreProfForm cpf = new CreProfForm();
-            cpf.ShowDialog();
+            CreProfForm cpf = new CreProfForm(this);
+            this.Enabled = false;
+            cpf.Show(this);
         }
 
-        private void ProfilesForm_Load(object sender, EventArgs e)
+        private void DirectCheck()
         {
             string profDirector = Application.StartupPath + "\\Profiles";
 
             if (!Directory.Exists(profDirector))
                 Directory.CreateDirectory(profDirector);
 
-            foreach (string prof in Directory.GetFiles(profDirector, "*.spprof", SearchOption.TopDirectoryOnly))
+            profDict.Clear();
+            foreach (string prof in Directory.GetFiles(profDirector+'\\', "*.spprof", SearchOption.TopDirectoryOnly))
             {
-                string n = prof.Substring(profDirector.Length);
-                profDict.Add(n.Remove(n.Length - 8), prof);
+                string n = prof.Substring(profDirector.Length+1);
+                profDict.Add(n.Remove(n.Length - 7), prof);
             }
 
-            listBox1.DataSource = profDict;
+            if (profDict.Count != 0)
+            {
+                listBox1.Items.Clear();
+                foreach(string k in profDict.Keys)
+                {
+                    listBox1.Items.Add(k);
+                }
+            }
+        }
+
+        private void ProfilesForm_EnabledChanged(object sender, EventArgs e)
+        {
+            if (this.Enabled == true)
+                DirectCheck();
+        }
+
+        private void ProfilesForm_Shown(object sender, EventArgs e)
+        {
+            DirectCheck();
         }
     }
 }
