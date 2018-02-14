@@ -6,6 +6,6 @@
 
 Microsoft Speech Platform
 
-Runtime (Version 11) - https://www.microsoft.com/en-us/Download/details.aspx?id=27225                                                      
+Runtime (Version 11) - https://www.microsoft.com/en-us/Download/details.aspx?id=27225             
 Runtime Languages (Version 11) - https://www.microsoft.com/en-in/download/details.aspx?id=27224
 Software Development Kit (SDK) (Version 11) - https://www.microsoft.com/en-US/Download/details.aspx?id=27226
