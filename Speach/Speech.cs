@@ -7,8 +7,8 @@ namespace Speach
     static class Speech
     {
         static SpeechRecognitionEngine mSpech;
-        public delegate void record(string str);
-        static public record dop;
+        public delegate void DetectedEventHandler(DetectedEventArgs e);
+        static public event DetectedEventHandler WordsDetected;
 
         static public void Inicil()
         {
@@ -44,9 +44,25 @@ namespace Speach
 
         static void rec_SpeechRecognized(object sender, SpeechRecognizedEventArgs e)
         {
-            if(e.Result.Confidence >= 0.9)
-                dop(e.Result.Text);
-
+            if (e.Result.Confidence >= 0.9)
+                WordsDetected(new DetectedEventArgs(e.Result.Text));
         }
     }
+
+    public class DetectedEventArgs : EventArgs
+    {
+        public DetectedEventArgs(string words)
+        {
+            mess = words;
+        }
+
+        private string mess;
+
+        public string Detected
+        {
+            get { return mess; }
+        }
+    }
+
+
 }

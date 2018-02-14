@@ -15,18 +15,18 @@ namespace Speach
 
         private void Form1_Shown(object sender, EventArgs e)
         {
-            Speech.dop = rec_Recognized;
+            Speech.WordsDetected += rec_Recognized;
             Speech.Inicil();
         }
 
-        void rec_Recognized(string recog)
+        void rec_Recognized(DetectedEventArgs recog)
         {
             Task ts = Task.Factory.StartNew(() =>
             {
                 InputSimulator inp = new InputSimulator();
                 WindowsInput.Native.VirtualKeyCode ex = WindowsInput.Native.VirtualKeyCode.LBUTTON;
 
-                switch (recog.Remove(0,5))
+                switch (recog.Detected.Remove(0,5))
                 {
                     case "навигация" : ex = WindowsInput.Native.VirtualKeyCode.VK_1;break;
                     case "системы": ex = WindowsInput.Native.VirtualKeyCode.VK_4; break;
