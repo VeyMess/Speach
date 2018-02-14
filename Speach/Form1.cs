@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Windows.Forms;
-using System.Threading.Tasks;
-using System.Runtime.InteropServices;
 using WindowsInput;
 
 namespace Speach
@@ -21,8 +19,6 @@ namespace Speach
 
         void rec_Recognized(DetectedEventArgs recog)
         {
-            Task ts = Task.Factory.StartNew(() =>
-            {
                 InputSimulator inp = new InputSimulator();
                 WindowsInput.Native.VirtualKeyCode ex = WindowsInput.Native.VirtualKeyCode.LBUTTON;
 
@@ -53,7 +49,6 @@ namespace Speach
                     inp.Keyboard.Sleep(30);
                     inp.Keyboard.KeyUp(ex);
                 }
-            });
         }
     }
 }
