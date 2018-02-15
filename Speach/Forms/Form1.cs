@@ -72,6 +72,7 @@ namespace Speach
         private void LoadRulesFromXml()
         {
             doc = new XmlDocument();
+            listBox1.Items.Clear();
 
             doc.Load(Application.StartupPath + "\\Profiles\\" + textBox1.Text + ".spprof");
 
@@ -103,6 +104,8 @@ namespace Speach
             LoadRulesFromXml();
             */
 
+            RuleEdForm crt = new RuleEdForm(doc);
+            crt.ShowDialog();
         }
     }
 }

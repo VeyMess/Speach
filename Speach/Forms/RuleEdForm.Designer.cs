@@ -1,4 +1,4 @@
-﻿namespace Speach.Forms
+﻿namespace Speach
 {
     partial class RuleEdForm
     {
@@ -77,6 +77,7 @@
             this.button1.TabIndex = 4;
             this.button1.Text = "Применить";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // button2
             // 
@@ -86,6 +87,7 @@
             this.button2.TabIndex = 5;
             this.button2.Text = "Отмена";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // RuleEdForm
             // 
