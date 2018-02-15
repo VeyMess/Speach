@@ -62,6 +62,12 @@
     <Compile Include="Forms\Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\RuleEdForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\RuleEdForm.Designer.cs">
+      <DependentUpon>RuleEdForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Profiles.cs" />
     <Compile Include="Forms\ProfilesForm.cs">
       <SubType>Form</SubType>
@@ -80,6 +86,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\ProfilesForm.resx">
       <DependentUpon>ProfilesForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\RuleEdForm.resx">
+      <DependentUpon>RuleEdForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
