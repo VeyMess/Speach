@@ -8,6 +8,7 @@ namespace Speach
     public partial class ProfilesForm : Form
     {
         public Dictionary<string,string> profDict = new Dictionary<string, string>();
+        public string answr;
         public ProfilesForm()
         {
             InitializeComponent();
@@ -63,7 +64,8 @@ namespace Speach
 
         private void button1_Click(object sender, EventArgs e)
         {
-            this.Close();
+            answr = listBox1.SelectedItem.ToString();
+            DialogResult = DialogResult.OK;
         }
 
         private void listBox1_SelectedValueChanged(object sender, EventArgs e)

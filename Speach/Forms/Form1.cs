@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Windows.Forms;
+using System.Xml;
 using WindowsInput;
 
 namespace Speach
 {
     public partial class Form1 : Form
     {
+        private XmlDocument doc;
         public Form1()
         {
             InitializeComponent();
@@ -60,6 +62,47 @@ namespace Speach
         {
             ProfilesForm prof = new ProfilesForm();
             prof.ShowDialog();
+            if(prof.DialogResult==DialogResult.OK)
+            {
+                textBox1.Text = prof.answr;
+                LoadRulesFromXml();
+            }
+        }
+
+        private void LoadRulesFromXml()
+        {
+            doc = new XmlDocument();
+
+            doc.Load(Application.StartupPath + "\\Profiles\\" + textBox1.Text + ".spprof");
+
+            XmlElement root = doc.DocumentElement;
+            foreach(XmlNode temp in root.ChildNodes)
+            {
+                if(temp.Name=="rule")
+                {
+                    listBox1.Items.Add(temp.Attributes["id"].Value);
+                }
+            }
+
+            button2.Enabled = button3.Enabled = button4.Enabled = true;
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            /*
+            XmlElement rule = doc.CreateElement("rule");
+            XmlAttribute id = doc.CreateAttribute("id");
+            id.Value = "Testing";
+
+            rule.Attributes.Append(id);
+            doc.DocumentElement.AppendChild(rule);
+
+            doc.Save(Application.StartupPath + "\\Profiles\\" + textBox1.Text + ".spprof");
+
+            listBox1.Items.Clear();
+            LoadRulesFromXml();
+            */
+
         }
     }
 }
