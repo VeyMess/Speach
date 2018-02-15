@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<rules>
+  <rule id ="название правила">
+    <dictionary>
+      <word>
+        
+      </word>
+    </dictionary>
+    <command id="название клавиши"></command>
+  </rule>
+</rules>

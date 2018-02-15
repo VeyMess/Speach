@@ -17,6 +17,7 @@ namespace Speach
             Speech.Inicil();
         }
 
+        /*
         void rec_Recognized(DetectedEventArgs recog)
         {
                 InputSimulator inp = new InputSimulator();
@@ -46,9 +47,13 @@ namespace Speach
                 if (ex != WindowsInput.Native.VirtualKeyCode.LBUTTON)
                 {
                     inp.Keyboard.KeyDown(ex);
-                    inp.Keyboard.Sleep(30);
                     inp.Keyboard.KeyUp(ex);
                 }
+        }
+        */
+        void rec_Recognized(DetectedEventArgs recog)
+        {
+            MessageBox.Show(recog.Detected);
         }
 
         private void button1_Click(object sender, EventArgs e)

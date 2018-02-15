@@ -1,6 +1,7 @@
 ﻿using System.Windows.Forms;
 using System.IO;
 using System;
+using System.Xml;
 using System.Collections.Generic;
 
 namespace Speach
@@ -26,7 +27,8 @@ namespace Speach
             {
                 if(!prf.profDict.ContainsKey(textBox1.Text))
                 {
-                    File.Create(Application.StartupPath + "\\Profiles\\" + textBox1.Text + ".spprof");
+                    //File.Create(Application.StartupPath + "\\Profiles\\" + textBox1.Text + ".spprof");
+                    ConstrXML().Save(Application.StartupPath + "\\Profiles\\" + textBox1.Text + ".spprof");
                     this.Owner.Enabled = true;
                     this.Close();
                 }
@@ -35,6 +37,16 @@ namespace Speach
                     MessageBox.Show("Профиль с таким названием уже существует");
                 }
             }
+        }
+
+        private XmlDocument ConstrXML()
+        {
+            XmlDocument retv = new XmlDocument();
+
+            retv.AppendChild(retv.CreateXmlDeclaration("1.0", "utf-8", null));
+            retv.AppendChild(retv.CreateElement("rules"));
+
+            return retv;
         }
     }
 }

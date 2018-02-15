@@ -11,6 +11,7 @@ namespace Speach
         public ProfilesForm()
         {
             InitializeComponent();
+            button1.Enabled = false;
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -58,6 +59,17 @@ namespace Speach
         private void ProfilesForm_Shown(object sender, EventArgs e)
         {
             DirectCheck();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void listBox1_SelectedValueChanged(object sender, EventArgs e)
+        {
+            if (listBox1.SelectedIndex>=0)
+                button1.Enabled = true;
         }
     }
 }
